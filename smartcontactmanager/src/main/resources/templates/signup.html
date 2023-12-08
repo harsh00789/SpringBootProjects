@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section class="banner text-light ">
+
+
+<div class="container">
+	
+<div class="row">
+	
+<div class="col-md-8 offset-md-2">
+	<div class="my-card">
+		<div  class="text-center">
+			<img th:src="@{../img/signup.png}">
+			
+		<h1>Registration </h1>
+</div>
+ <form th:action="@{/do_register}" method="post" th:object="${user}">
+	 
+	<div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Your name</label>
+    <input type="text" class="form-control" id="name" name="name" placeholder="enter here">
+   
+  </div>
+  
+   <div class="mb-3">
+	   <label class="form-label">your Email</label>
+	   <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="enter here">
+   </div>
+   
+   <div class="mb-3">
+	   <label class="form-label">your password</label>
+	   <input type="password" name="password" class="form-control">
+   </div>
+   
+   <div class="mb-3">
+	   
+	   <textarea class="form-control" rows="6" name="about" placeholder="enter something about yourself...."></textarea>   
+   </div>
+   <div class="mb-3">
+	   <button type="submit" class="btn btn-success" name="submit">SignUp</button>
+   </div>
+ </form>	
+	</div>	
+</div>	
+</div>
+
+</div>
+</section>
+</body>
+</html>
+
+
