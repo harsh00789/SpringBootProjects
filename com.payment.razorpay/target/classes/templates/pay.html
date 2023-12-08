@@ -1,0 +1,90 @@
+<html>
+	
+	<head>
+		
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  
+		
+	</head>
+	<body>
+		
+		<div class="d-flex justify-content-center">
+		<div class="card text-center " style="width: 18rem;">
+  <img src="../img/7884399.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Store</h5>
+    <p class="card-text">Shopping is an activity in which a customer browses the available goods or services presented by one or more retailers with the potential intent to purchase a suitable selection of them.</p>
+  
+    
+    <button type="button" onclick="createorderid(200000,'1500 INR paid')" class="btn btn-success">Buy Now</button>
+    
+  </div>
+</div>
+		</div>
+		
+		<script src="https://checkout.razorpay.com/v1/checkout.js"> </script>
+		<script>
+			
+			var xhttp = new XMLHttpRequest();
+			function createorderid(amount , description){
+				
+				totalamount = amount*100;
+				
+				xhttp.open("GET" , "/payment/createOrderId/"+totalamount , false);
+				xhttp.send();
+				
+			  	var rezororderid = xhttp.responseText;
+				console.log("rezororderid"+rezororderid);
+				
+				openpaymentbox(amount , description , rezororderid);
+				
+				
+			}
+			
+		</script>
+		
+		
+		<script>
+			
+			function openpaymentbox(amount , description , rezororderid){
+				
+				var option = {
+					
+					"key": "[[${rzp_key_id}]]",
+					"amount" : totalamount.toString(),
+					"currency" : "[[${rzp_currency}]]",
+					"order_id" : rezororderid,
+					"name" : "thaker",
+					
+					
+					"callback_url": "/done",
+					
+					
+					"theme" : {
+						"color" : "#4B0082"
+					}
+					
+				
+					
+				};
+			
+			var rzor = new Razorpay(option);
+				
+				rzor.open();
+				
+				
+				
+				
+			}
+			
+			
+			
+			
+		</script>
+		
+		
+	</body>
+	
+</html>
