@@ -48,6 +48,13 @@ function display(data) {
             // Function to display details for a selected item
           
             function displayDetails(itemId) {
+				   if(nextquestion>=15){
+					 console.log(correct);
+					 console.log(incorrect);
+					 var url = '/successfull?correct='+correct+'&incorrect='+incorrect;
+					 
+					 window.location.href = url
+				 }
                 var selectedItem = jsonData[itemId];
 
             
@@ -73,6 +80,7 @@ function display(data) {
             
                 // Display details in a separate container
               /*<!--  $("#options").text("Details: " + selectedItem.correct_answer);-->*/
+ 
    
             }
 
@@ -86,11 +94,7 @@ function display(data) {
 				 var clickindex = button.index(this);
 				 
 				 
-				 if(nextquestion>=15){
-					 console.log(correct);
-					 console.log(incorrect);
-					 window.location.href = "/successfull"
-				 }
+				
 				 
 				 nextquestion++;
 				  var questionremain = document.getElementById("questionremain");
@@ -120,7 +124,14 @@ function display(data) {
         };
     
 
-
+function tryagain(){
+		$("#try").on("click","button",function(){
+		alert("hi");
+		window.location.href = "/quiz"
+		
+	});
+	
+}
 
 
 function showQuestion(data){
